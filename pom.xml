@@ -12,6 +12,11 @@
 	<version>1-SNAPSHOT</version>
 	<packaging>pom</packaging>
 
+	<modules>
+		<module>akka-poc-http</module>
+		<module>akka-poc-mongodb</module>
+	</modules>
+
 	<repositories>
 		<repository>
 			<id>srcpit-public</id>
