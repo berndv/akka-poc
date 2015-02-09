@@ -1,0 +1,25 @@
+{
+	"database": "users",
+	"servers": 
+	[
+		{
+			"host": "localhost",
+			"port": 27017
+		}
+	],
+
+	"credentials": 
+	[
+		{
+			"mechanism": "PLAIN",
+			"userName": "",
+			"source": "$external",
+			"password": ""
+		}
+	],
+
+	"options": 
+	{
+		
+	}
+}
