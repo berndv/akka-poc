@@ -16,12 +16,33 @@
 
 package org.sourcepit.akka.poc.mongodb;
 
+import java.io.IOException;
+
+import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
+import akka.actor.Props;
+import akka.actor.UntypedActor;
 
 public class Main
 {
-   public static void main(String[] args)
+   public static void main(String[] args) throws IOException
    {
-      ActorSystem actorSystem = ActorSystem.create("");
+      final ActorSystem actorSystem = ActorSystem.create();
+
+      ActorRef fooRef = actorSystem.actorOf(Props.create(FooActor.class));
+      fooRef.tell("hallo", null);
+      
+      System.in.read();
+      
+      System.exit(0);
+   }
+
+   public static class FooActor extends UntypedActor
+   {
+      @Override
+      public void onReceive(Object msg) throws Exception
+      {
+         System.out.println(msg);
+      }
    }
 }
