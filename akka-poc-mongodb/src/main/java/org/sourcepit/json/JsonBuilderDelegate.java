@@ -28,7 +28,7 @@ public interface JsonBuilderDelegate<JsonObject, JsonArray>
    void setArray(JsonObject owner, String name, JsonArray value);
 
    void setNull(JsonObject owner, String name);
-   
+
    void set(JsonObject owner, String name, String value);
 
    void set(JsonObject owner, String name, BigInteger value);

@@ -17,6 +17,12 @@
 
 package example;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+
+import java.net.UnknownHostException;
+import java.util.List;
+import java.util.Set;
+
 import com.mongodb.BasicDBObject;
 import com.mongodb.BulkWriteOperation;
 import com.mongodb.BulkWriteResult;
@@ -27,12 +33,6 @@ import com.mongodb.DBCursor;
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.ParallelScanOptions;
-
-import java.net.UnknownHostException;
-import java.util.List;
-import java.util.Set;
-
-import static java.util.concurrent.TimeUnit.SECONDS;
 
 /**
  * The tutorial from http://docs.mongodb.org/ecosystem/tutorial/getting-started-with-java-driver/
@@ -74,7 +74,8 @@ public class QuickTour
       coll.drop();
 
       // make a document and insert it
-      BasicDBObject doc = new BasicDBObject("name", "MongoDB").append("type", "database").append("count", 1)
+      BasicDBObject doc = new BasicDBObject("name", "MongoDB").append("type", "database")
+         .append("count", 1)
          .append("info", new BasicDBObject("x", 203).append("y", 102));
 
       coll.insert(doc);

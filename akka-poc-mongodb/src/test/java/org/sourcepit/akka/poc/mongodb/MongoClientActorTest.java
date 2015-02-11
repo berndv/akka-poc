@@ -28,10 +28,10 @@ public class MongoClientActorTest
    {
       BSONBuilder json = new BSONBuilder();
 
-      BasicBSONObject conf = json.beginObject()
-         .withField("servers")
-         .setToArray(
-            json.beginArray()
+      BasicBSONObject conf = json.openObject()
+         .setField("servers")
+         .toArray(
+            json.openArray()
                .add(1)
                .add(1)
                .add(1)
@@ -44,8 +44,8 @@ public class MongoClientActorTest
                .add(1)
                .add(1)
                .add(1)
-               .endArray())
-         .endObject();
+               .closeArray())
+         .closeObject();
 
    }
 

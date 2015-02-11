@@ -16,15 +16,10 @@
 
 package org.sourcepit.akka.poc.mongodb;
 
-import java.util.List;
-
 import akka.actor.Props;
 import akka.actor.UntypedActor;
 
 import com.mongodb.DBObject;
-import com.mongodb.MongoClient;
-import com.mongodb.MongoCredential;
-import com.mongodb.ServerAddress;
 
 public class MongoManagerActor extends UntypedActor
 {

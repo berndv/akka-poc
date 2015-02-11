@@ -23,7 +23,6 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 import org.junit.Test;
-import org.sourcepit.json.JsonBuilder;
 
 public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
 {
@@ -33,7 +32,7 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testEmptyObject()
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonObject object = jb.beginObject().endObject();
+      JsonObject object = jb.openObject().closeObject();
       assertEquals("{}", normalize(object.toString()));
    }
 
@@ -41,12 +40,12 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testBigIntegerField() throws Exception
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonObject object = jb.beginObject()
-         .withField("big")
-         .setTo(BigInteger.valueOf(42))
-         .withField("null")
-         .setTo((BigInteger) null)
-         .endObject();
+      JsonObject object = jb.openObject()
+         .setField("big")
+         .to(BigInteger.valueOf(42))
+         .setField("null")
+         .to((BigInteger) null)
+         .closeObject();
       assertEquals("{'big':42,'null':null}", normalize(object.toString()));
    }
 
@@ -54,12 +53,12 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testBigDecimalField() throws Exception
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonObject object = jb.beginObject()
-         .withField("big")
-         .setTo(BigDecimal.valueOf(42))
-         .withField("null")
-         .setTo((BigDecimal) null)
-         .endObject();
+      JsonObject object = jb.openObject()
+         .setField("big")
+         .to(BigDecimal.valueOf(42))
+         .setField("null")
+         .to((BigDecimal) null)
+         .closeObject();
       assertEquals("{'big':42,'null':null}", normalize(object.toString()));
    }
 
@@ -67,14 +66,14 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testDoubleField() throws Exception
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonObject object = jb.beginObject()
-         .withField("big")
-         .setTo(Double.valueOf(Double.MAX_VALUE))
-         .withField("little")
-         .setTo(Double.MAX_VALUE)
-         .withField("null")
-         .setTo((Double) null)
-         .endObject();
+      JsonObject object = jb.openObject()
+         .setField("big")
+         .to(Double.valueOf(Double.MAX_VALUE))
+         .setField("little")
+         .to(Double.MAX_VALUE)
+         .setField("null")
+         .to((Double) null)
+         .closeObject();
       assertEquals("{'big':1.7976931348623157E308,'little':1.7976931348623157E308,'null':null}",
          normalize(object.toString()));
    }
@@ -83,14 +82,14 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testFloatField() throws Exception
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonObject object = jb.beginObject()
-         .withField("big")
-         .setTo(Float.valueOf(Float.MAX_VALUE))
-         .withField("little")
-         .setTo(Float.MAX_VALUE)
-         .withField("null")
-         .setTo((Float) null)
-         .endObject();
+      JsonObject object = jb.openObject()
+         .setField("big")
+         .to(Float.valueOf(Float.MAX_VALUE))
+         .setField("little")
+         .to(Float.MAX_VALUE)
+         .setField("null")
+         .to((Float) null)
+         .closeObject();
       assertEquals("{'big':3.4028235E38,'little':3.4028234663852886E38,'null':null}", normalize(object.toString()));
    }
 
@@ -98,14 +97,14 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testIntegerField() throws Exception
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonObject object = jb.beginObject()
-         .withField("big")
-         .setTo(Integer.valueOf(Integer.MAX_VALUE))
-         .withField("little")
-         .setTo(Integer.MAX_VALUE)
-         .withField("null")
-         .setTo((Integer) null)
-         .endObject();
+      JsonObject object = jb.openObject()
+         .setField("big")
+         .to(Integer.valueOf(Integer.MAX_VALUE))
+         .setField("little")
+         .to(Integer.MAX_VALUE)
+         .setField("null")
+         .to((Integer) null)
+         .closeObject();
       assertEquals("{'big':2147483647,'little':2147483647,'null':null}", normalize(object.toString()));
    }
 
@@ -113,14 +112,14 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testLongField() throws Exception
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonObject object = jb.beginObject()
-         .withField("big")
-         .setTo(Long.valueOf(Long.MAX_VALUE))
-         .withField("little")
-         .setTo(Long.MAX_VALUE)
-         .withField("null")
-         .setTo((Long) null)
-         .endObject();
+      JsonObject object = jb.openObject()
+         .setField("big")
+         .to(Long.valueOf(Long.MAX_VALUE))
+         .setField("little")
+         .to(Long.MAX_VALUE)
+         .setField("null")
+         .to((Long) null)
+         .closeObject();
       assertEquals("{'big':9223372036854775807,'little':9.223372036854776E18,'null':null}",
          normalize(object.toString()));
    }
@@ -130,14 +129,14 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testShortField() throws Exception
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonObject object = jb.beginObject()
-         .withField("big")
-         .setTo(Short.valueOf(Short.MAX_VALUE))
-         .withField("little")
-         .setTo(Short.MAX_VALUE)
-         .withField("null")
-         .setTo((Short) null)
-         .endObject();
+      JsonObject object = jb.openObject()
+         .setField("big")
+         .to(Short.valueOf(Short.MAX_VALUE))
+         .setField("little")
+         .to(Short.MAX_VALUE)
+         .setField("null")
+         .to((Short) null)
+         .closeObject();
       assertEquals("{'big':32767,'little':32767.0,'null':null}", normalize(object.toString()));
    }
 
@@ -145,12 +144,7 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testStringField() throws Exception
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonObject object = jb.beginObject()
-         .withField("big")
-         .setTo("string")
-         .withField("null")
-         .setTo((String) null)
-         .endObject();
+      JsonObject object = jb.openObject().setField("big").to("string").setField("null").to((String) null).closeObject();
       assertEquals("{'big':'string','null':null}", normalize(object.toString()));
    }
 
@@ -158,13 +152,13 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testComplexField() throws Exception
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonObject object = jb.beginObject()
-         .withField("foo")
-         .setToObject()
-         .withField("bar")
-         .setTo(74)
-         .endObject()
-         .endObject();
+      JsonObject object = jb.openObject()
+         .setField("foo")
+         .toOpenObject()
+         .setField("bar")
+         .to(74)
+         .closeObject()
+         .closeObject();
       assertEquals("{'foo':{'bar':74}}", normalize(object.toString()));
    }
 
@@ -172,7 +166,7 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testEmptyArray()
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonArray array = jb.beginArray().endArray();
+      JsonArray array = jb.openArray().closeArray();
       assertEquals("[]", normalize(array.toString()));
    }
 
@@ -180,7 +174,7 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testSimpleArray()
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonArray array = jb.beginArray().add(1).add(2).add(3).endArray();
+      JsonArray array = jb.openArray().add(1).add(2).add(3).closeArray();
       assertEquals("[1,2,3]", normalize(array.toString()));
    }
 
@@ -188,16 +182,16 @@ public abstract class AbstractJsonBuilderTest<JsonObject, JsonArray>
    public void testComplexArray()
    {
       JsonBuilder<JsonObject, JsonArray> jb = newJsonBuilder();
-      JsonArray array = jb.beginArray()
-         .addObject()
-         .withField("foo")
-         .setTo(1)
-         .endObject()
-         .addObject()
-         .withField("bar")
-         .setTo(2)
-         .endObject()
-         .endArray();
+      JsonArray array = jb.openArray()
+         .addOpenObject()
+         .setField("foo")
+         .to(1)
+         .closeObject()
+         .addOpenObject()
+         .setField("bar")
+         .to(2)
+         .closeObject()
+         .closeArray();
       assertEquals("[{'foo':1},{'bar':2}]", normalize(array.toString()));
    }
 

@@ -22,38 +22,38 @@ import java.math.BigInteger;
 
 public interface JsonPropertyBuilder<ParentBuilder, JsonObject, JsonArray>
 {
-   JsonObjectBuilder<JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> setToObject();
+   JsonObjectBuilder<JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> toOpenObject();
 
-   JsonArrayBuilder<JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> setToArray();
+   JsonArrayBuilder<JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> toOpenArray();
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setToObject(JsonObject value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> toObject(JsonObject value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setToArray(JsonArray value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> toArray(JsonArray value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(String value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(String value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(BigDecimal value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(BigDecimal value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(BigInteger value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(BigInteger value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(Double value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(Double value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(double value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(double value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(Float value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(Float value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(float value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(float value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(Long value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(Long value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(long value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(long value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(Integer value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(Integer value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(int value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(int value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(Short value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(Short value);
 
-   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(short value);
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(short value);
 
 }

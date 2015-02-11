@@ -18,12 +18,12 @@ package org.sourcepit.akka.poc.mongodb;
 
 import java.util.List;
 
+import akka.actor.UntypedActor;
+
 import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
-
-import akka.actor.UntypedActor;
 
 public class MongoClientActor extends UntypedActor
 {

@@ -23,7 +23,7 @@ public interface JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>
 
    JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(String string);
 
-   JsonObjectBuilder<JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> addObject();
+   JsonObjectBuilder<JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> addOpenObject();
 
-   ParentBuilder endArray();
+   ParentBuilder closeArray();
 }

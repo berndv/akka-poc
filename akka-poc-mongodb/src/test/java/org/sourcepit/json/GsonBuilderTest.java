@@ -16,9 +16,6 @@
 
 package org.sourcepit.json;
 
-import org.sourcepit.json.GsonBuilder;
-import org.sourcepit.json.JsonBuilder;
-
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 

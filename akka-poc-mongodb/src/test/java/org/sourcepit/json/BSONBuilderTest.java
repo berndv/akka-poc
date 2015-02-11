@@ -18,8 +18,6 @@ package org.sourcepit.json;
 
 import org.bson.BasicBSONObject;
 import org.bson.types.BasicBSONList;
-import org.sourcepit.json.BSONBuilder;
-import org.sourcepit.json.JsonBuilder;
 
 public class BSONBuilderTest extends AbstractJsonBuilderTest<BasicBSONObject, BasicBSONList>
 {
