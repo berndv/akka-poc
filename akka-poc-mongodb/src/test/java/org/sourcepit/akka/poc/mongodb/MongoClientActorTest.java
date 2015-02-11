@@ -16,36 +16,53 @@
 
 package org.sourcepit.akka.poc.mongodb;
 
+import static org.junit.Assert.assertEquals;
+
+import java.net.UnknownHostException;
+import java.util.List;
+
 import org.bson.BasicBSONObject;
 import org.junit.Test;
 import org.sourcepit.json.BSONBuilder;
+
+import com.mongodb.ServerAddress;
 
 public class MongoClientActorTest
 {
 
    @Test
-   public void test()
+   public void test() throws UnknownHostException
    {
       BSONBuilder json = new BSONBuilder();
 
       BasicBSONObject conf = json.openObject()
          .setField("servers")
-         .toArray(
-            json.openArray()
-               .add(1)
-               .add(1)
-               .add(1)
-               .add(1)
-               .add(1)
-               .add(1)
-               .add(1)
-               .add(1)
-               .add(1)
-               .add(1)
-               .add(1)
-               .add(1)
-               .closeArray())
+         .toOpenArray()
+         .addObject(json.openObject().setField("host").to("localhost").setField("port").to(27017).closeObject())
+         .closeArray()
+         .setField("credentials")
+         .toOpenArray()
+         .addObject(
+            json.openObject()
+               .setField("mechanism")
+               .to("plain")
+               .setField("userName")
+               .to("")
+               .setField("source")
+               .to("$external")
+               .setField("password")
+               .to("")
+               .closeObject())
+         .closeArray()
+         .setField("options")
+         .toOpenObject()
+         .closeObject()
          .closeObject();
+
+      System.out.println(conf);
+
+      List<ServerAddress> servers = MongoClientActor.toServerAddresses(MongoClientActor.getUnsafeList(conf, "servers"));
+      assertEquals(1, servers.size());
 
    }
 

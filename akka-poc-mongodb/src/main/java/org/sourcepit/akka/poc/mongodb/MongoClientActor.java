@@ -16,11 +16,14 @@
 
 package org.sourcepit.akka.poc.mongodb;
 
+import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
+
+import org.bson.BSONObject;
 
 import akka.actor.UntypedActor;
 
-import com.mongodb.DBObject;
 import com.mongodb.MongoClient;
 import com.mongodb.MongoCredential;
 import com.mongodb.ServerAddress;
@@ -29,7 +32,7 @@ public class MongoClientActor extends UntypedActor
 {
    final MongoClient client;
 
-   public MongoClientActor(DBObject clientDef)
+   public MongoClientActor(BSONObject clientDef) throws UnknownHostException
    {
       // { "users": { "find": [ { "age": { "$gt": 18 } }, { "name": 1, "address": 1 } ] } }
       // vs.
@@ -41,18 +44,32 @@ public class MongoClientActor extends UntypedActor
       client = new MongoClient(servers, credentials); // TODO: git_user_name Auto-generated constructor stub
    }
 
-   private List<MongoCredential> toMongoCredentials(List<Object> unsafeList)
+   List<MongoCredential> toMongoCredentials(List<Object> unsafeList)
    {
       throw new UnsupportedOperationException();
    }
 
-   private static List<ServerAddress> toServerAddresses(List<DBObject> servers)
+   static List<ServerAddress> toServerAddresses(List<BSONObject> servers) throws UnknownHostException
    {
-      throw new UnsupportedOperationException();
+      final List<ServerAddress> result = new ArrayList<>(servers.size());
+      for (BSONObject server : servers)
+      {
+         result.add(toServerAddresse(server));
+      }
+      return result;
+   }
+
+   private static ServerAddress toServerAddresse(BSONObject server) throws UnknownHostException
+   {
+      final Object oHost = server.get("host");
+      final String host = oHost == null ? ServerAddress.defaultHost() : (String) oHost;
+      final Object oPort = server.get("port");
+      final int port = oPort == null ? ServerAddress.defaultPort() : ((Integer) oPort).intValue();
+      return new ServerAddress(host, port);
    }
 
    @SuppressWarnings("unchecked")
-   private static <T> List<T> getUnsafeList(final DBObject obj, String field)
+   static <T> List<T> getUnsafeList(final BSONObject obj, String field)
    {
       return (List<T>) obj.get(field);
    }
