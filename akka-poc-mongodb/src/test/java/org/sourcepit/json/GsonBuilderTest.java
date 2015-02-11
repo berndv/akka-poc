@@ -26,4 +26,16 @@ public class GsonBuilderTest extends AbstractJsonBuilderTest<JsonObject, JsonArr
    {
       return new GsonBuilder();
    }
+
+   @Override
+   protected String arrayToString(JsonArray array)
+   {
+      return array.toString();
+   }
+
+   @Override
+   protected String objectToString(JsonObject object)
+   {
+      return object.toString();
+   }
 }

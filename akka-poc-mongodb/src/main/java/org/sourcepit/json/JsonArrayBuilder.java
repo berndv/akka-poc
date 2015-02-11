@@ -16,14 +16,51 @@
 
 package org.sourcepit.json;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 
 public interface JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>
 {
+   JsonObjectBuilder<JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> addOpenObject();
+
+   JsonArrayBuilder<JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> addOpenArray();
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> addObject(JsonObject value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> addArray(JsonArray value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> addNull();
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(String value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(BigDecimal value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(BigInteger value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(Double value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(double value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(Float value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(float value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(Long value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(long value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(Integer value);
+
    JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(int value);
 
-   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(String string);
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(Short value);
 
-   JsonObjectBuilder<JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> addOpenObject();
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(short value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(Boolean value);
+
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(boolean value);
 
    ParentBuilder closeArray();
 }

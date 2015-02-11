@@ -98,6 +98,12 @@ public class BSONBuilderDelegate implements JsonBuilderDelegate<BasicBSONObject,
    }
 
    @Override
+   public void set(BasicBSONObject owner, String name, Boolean value)
+   {
+      owner.put(name, value);
+   }
+
+   @Override
    public BasicBSONList createJsonArray()
    {
       return new BasicBSONList();
@@ -169,5 +175,10 @@ public class BSONBuilderDelegate implements JsonBuilderDelegate<BasicBSONObject,
       array.add(value);
    }
 
+   @Override
+   public void add(BasicBSONList array, Boolean value)
+   {
+      array.add(value);
+   }
 
 }

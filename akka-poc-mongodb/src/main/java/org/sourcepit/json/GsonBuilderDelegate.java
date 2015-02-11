@@ -100,6 +100,12 @@ public class GsonBuilderDelegate implements JsonBuilderDelegate<JsonObject, Json
    }
 
    @Override
+   public void set(JsonObject owner, String name, Boolean value)
+   {
+      owner.addProperty(name, value);
+   }
+
+   @Override
    public JsonArray createJsonArray()
    {
       return new JsonArray();
@@ -167,6 +173,12 @@ public class GsonBuilderDelegate implements JsonBuilderDelegate<JsonObject, Json
 
    @Override
    public void add(JsonArray array, String value)
+   {
+      array.add(new JsonPrimitive(value));
+   }
+
+   @Override
+   public void add(JsonArray array, Boolean value)
    {
       array.add(new JsonPrimitive(value));
    }

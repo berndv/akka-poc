@@ -16,6 +16,8 @@
 
 package org.sourcepit.json;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
@@ -25,5 +27,31 @@ public class JacksonBuilderTest extends AbstractJsonBuilderTest<ObjectNode, Arra
    protected JsonBuilder<ObjectNode, ArrayNode> newJsonBuilder()
    {
       return new JacksonBuilder();
+   }
+
+   @Override
+   protected String arrayToString(ArrayNode array)
+   {
+      try
+      {
+         return new ObjectMapper().writeValueAsString(array);
+      }
+      catch (JsonProcessingException e)
+      {
+         throw new IllegalArgumentException(e);
+      }
+   }
+
+   @Override
+   protected String objectToString(ObjectNode object)
+   {
+      try
+      {
+         return new ObjectMapper().writeValueAsString(object);
+      }
+      catch (JsonProcessingException e)
+      {
+         throw new IllegalArgumentException(e);
+      }
    }
 }

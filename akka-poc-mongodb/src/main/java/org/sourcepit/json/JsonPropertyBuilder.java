@@ -30,6 +30,8 @@ public interface JsonPropertyBuilder<ParentBuilder, JsonObject, JsonArray>
 
    JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> toArray(JsonArray value);
 
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> toNull();
+
    JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(String value);
 
    JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(BigDecimal value);
@@ -56,4 +58,7 @@ public interface JsonPropertyBuilder<ParentBuilder, JsonObject, JsonArray>
 
    JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(short value);
 
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(Boolean value);
+
+   JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> to(boolean value);
 }

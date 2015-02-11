@@ -45,6 +45,8 @@ public interface JsonBuilderDelegate<JsonObject, JsonArray>
 
    void set(JsonObject owner, String name, Short value);
 
+   void set(JsonObject owner, String name, Boolean value);
+
    JsonArray createJsonArray();
 
    void addObject(JsonArray array, JsonObject value);
@@ -68,4 +70,6 @@ public interface JsonBuilderDelegate<JsonObject, JsonArray>
    void add(JsonArray array, Short value);
 
    void add(JsonArray array, String value);
+
+   void add(JsonArray array, Boolean value);
 }

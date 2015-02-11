@@ -101,6 +101,12 @@ public class JacksonBuilderDelegate implements JsonBuilderDelegate<ObjectNode, A
    }
 
    @Override
+   public void set(ObjectNode owner, String name, Boolean value)
+   {
+      owner.set(name, nodeFactory.booleanNode(value.booleanValue()));
+   }
+
+   @Override
    public ArrayNode createJsonArray()
    {
       return nodeFactory.arrayNode();
@@ -170,6 +176,12 @@ public class JacksonBuilderDelegate implements JsonBuilderDelegate<ObjectNode, A
    public void add(ArrayNode array, String value)
    {
       array.add(nodeFactory.textNode(value));
+   }
+
+   @Override
+   public void add(ArrayNode array, Boolean value)
+   {
+      array.add(nodeFactory.booleanNode(value.booleanValue()));
    }
 
 

@@ -19,11 +19,25 @@ package org.sourcepit.json;
 import org.bson.BasicBSONObject;
 import org.bson.types.BasicBSONList;
 
+import com.mongodb.util.JSONSerializers;
+
 public class BSONBuilderTest extends AbstractJsonBuilderTest<BasicBSONObject, BasicBSONList>
 {
    @Override
    protected JsonBuilder<BasicBSONObject, BasicBSONList> newJsonBuilder()
    {
       return new BSONBuilder();
+   }
+
+   @Override
+   protected String arrayToString(BasicBSONList array)
+   {
+      return JSONSerializers.getStrict().serialize(array);
+   }
+
+   @Override
+   protected String objectToString(BasicBSONObject object)
+   {
+      return JSONSerializers.getStrict().serialize(object);
    }
 }
