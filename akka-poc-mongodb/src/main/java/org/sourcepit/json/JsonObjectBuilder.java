@@ -15,9 +15,9 @@
  */
 
 package org.sourcepit.json;
-public interface JsonObjectBuilder<ParentBuilder>
+public interface JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>
 {
-   JsonPropertyBuilder<ParentBuilder> withField(String string);
+   JsonPropertyBuilder<ParentBuilder, JsonObject, JsonArray> withField(String string);
 
    ParentBuilder endObject();
 }

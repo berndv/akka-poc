@@ -17,13 +17,13 @@
 package org.sourcepit.json;
 
 
-public interface JsonArrayBuilder<ParentBuilder>
+public interface JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>
 {
-   JsonArrayBuilder<ParentBuilder> add(int value);
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(int value);
 
-   JsonArrayBuilder<ParentBuilder> add(String string);
+   JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(String string);
 
-   JsonObjectBuilder<JsonArrayBuilder<ParentBuilder>> addObject();
+   JsonObjectBuilder<JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> addObject();
 
    ParentBuilder endArray();
 }

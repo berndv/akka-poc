@@ -33,7 +33,7 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
 
    private class JsonArrayBuilderImpl<ParentBuilder> extends AbstractBuilder<ParentBuilder>
       implements
-         JsonArrayBuilder<ParentBuilder>
+         JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>
    {
       final JsonArray array;
 
@@ -44,26 +44,26 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonArrayBuilder<ParentBuilder> add(int value)
+      public JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(int value)
       {
          delegate.add(array, value);
          return this;
       }
 
       @Override
-      public JsonArrayBuilder<ParentBuilder> add(String value)
+      public JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> add(String value)
       {
          delegate.add(array, value);
          return this;
       }
 
       @Override
-      public JsonObjectBuilder<JsonArrayBuilder<ParentBuilder>> addObject()
+      public JsonObjectBuilder<JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> addObject()
       {
-         return new JsonObjectBuilderImpl<JsonArrayBuilder<ParentBuilder>>(this)
+         return new JsonObjectBuilderImpl<JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray>>(this)
          {
             @Override
-            public JsonArrayBuilder<ParentBuilder> endObject()
+            public JsonArrayBuilder<ParentBuilder, JsonObject, JsonArray> endObject()
             {
                delegate.addObject(array, object);
                return super.endObject();
@@ -80,7 +80,7 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
 
    private class JsonObjectBuilderImpl<ParentBuilder> extends AbstractBuilder<ParentBuilder>
       implements
-         JsonObjectBuilder<ParentBuilder>
+         JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>
    {
       final JsonObject object;
 
@@ -91,7 +91,7 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonPropertyBuilder<ParentBuilder> withField(String name)
+      public JsonPropertyBuilder<ParentBuilder, JsonObject, JsonArray> withField(String name)
       {
          return new JsonPropertyBuilderImpl<ParentBuilder>(this, name);
       }
@@ -105,7 +105,7 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
 
    private class JsonPropertyBuilderImpl<ParentBuilder> extends AbstractBuilder<JsonObjectBuilderImpl<ParentBuilder>>
       implements
-         JsonPropertyBuilder<ParentBuilder>
+         JsonPropertyBuilder<ParentBuilder, JsonObject, JsonArray>
    {
       private final String name;
 
@@ -114,9 +114,9 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
          super(parentBuilder);
          this.name = name;
       }
-      
+
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(String value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(String value)
       {
          if (value == null)
          {
@@ -130,7 +130,7 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(BigDecimal value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(BigDecimal value)
       {
          if (value == null)
          {
@@ -144,7 +144,7 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(BigInteger value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(BigInteger value)
       {
          if (value == null)
          {
@@ -158,7 +158,7 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(Double value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(Double value)
       {
          if (value == null)
          {
@@ -172,13 +172,13 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(double value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(double value)
       {
          return setTo(Double.valueOf(value));
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(Float value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(Float value)
       {
          if (value == null)
          {
@@ -192,13 +192,13 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(float value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(float value)
       {
          return setTo(Double.valueOf(value));
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(Long value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(Long value)
       {
          if (value == null)
          {
@@ -212,13 +212,13 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(long value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(long value)
       {
          return setTo(Double.valueOf(value));
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(Short value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(Short value)
       {
          if (value == null)
          {
@@ -232,13 +232,13 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(short value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(short value)
       {
          return setTo(Double.valueOf(value));
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(Integer value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(Integer value)
       {
          if (value == null)
          {
@@ -252,18 +252,18 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonObjectBuilder<ParentBuilder> setTo(int value)
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setTo(int value)
       {
          return setTo(Integer.valueOf(value));
       }
 
       @Override
-      public JsonArrayBuilder<JsonObjectBuilder<ParentBuilder>> setToArray()
+      public JsonArrayBuilder<JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> setToArray()
       {
-         return new JsonArrayBuilderImpl<JsonObjectBuilder<ParentBuilder>>(parentBuilder)
+         return new JsonArrayBuilderImpl<JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>>(parentBuilder)
          {
             @Override
-            public JsonObjectBuilder<ParentBuilder> endArray()
+            public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> endArray()
             {
                final JsonObject owner = JsonPropertyBuilderImpl.this.parentBuilder.object;
                delegate.setArray(owner, name, array);
@@ -273,18 +273,32 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
       }
 
       @Override
-      public JsonObjectBuilder<JsonObjectBuilder<ParentBuilder>> setToObject()
+      public JsonObjectBuilder<JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> setToObject()
       {
-         return new JsonObjectBuilderImpl<JsonObjectBuilder<ParentBuilder>>(parentBuilder)
+         return new JsonObjectBuilderImpl<JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>>(parentBuilder)
          {
             @Override
-            public JsonObjectBuilder<ParentBuilder> endObject()
+            public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> endObject()
             {
                final JsonObject owner = JsonPropertyBuilderImpl.this.parentBuilder.object;
                delegate.setObject(owner, name, object);
                return super.endObject();
             }
          };
+      }
+
+      @Override
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setToObject(JsonObject value)
+      {
+         // TODO: git_user_name Auto-generated method stub
+         return null;
+      }
+
+      @Override
+      public JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray> setToArray(JsonArray value)
+      {
+         // TODO: git_user_name Auto-generated method stub
+         return null;
       }
    }
 
@@ -296,7 +310,7 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
    }
 
    @Override
-   public JsonObjectBuilder<JsonObject> beginObject()
+   public JsonObjectBuilder<JsonObject, JsonObject, JsonArray> beginObject()
    {
       return new JsonObjectBuilderImpl<JsonObject>(null)
       {
@@ -309,7 +323,7 @@ public class GenericJsonBuilder<JsonObject, JsonArray> implements JsonBuilder<Js
    }
 
    @Override
-   public JsonArrayBuilder<JsonArray> beginArray()
+   public JsonArrayBuilder<JsonArray, JsonObject, JsonArray> beginArray()
    {
       return new JsonArrayBuilderImpl<JsonArray>(null)
       {

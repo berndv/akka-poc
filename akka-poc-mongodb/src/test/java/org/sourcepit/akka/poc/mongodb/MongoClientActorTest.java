@@ -26,20 +26,27 @@ public class MongoClientActorTest
    @Test
    public void test()
    {
-      BSONBuilder builder = new BSONBuilder();
-      
-      BasicBSONObject conf = builder
-         .beginObject()
+      BSONBuilder json = new BSONBuilder();
+
+      BasicBSONObject conf = json.beginObject()
          .withField("servers")
-         .setToArray()
-         .addObject()
-         .withField("host")
-         .setTo("localhost")
-         .withField("port")
-         .setTo(27017)
-         .endObject()
-         .endArray()
+         .setToArray(
+            json.beginArray()
+               .add(1)
+               .add(1)
+               .add(1)
+               .add(1)
+               .add(1)
+               .add(1)
+               .add(1)
+               .add(1)
+               .add(1)
+               .add(1)
+               .add(1)
+               .add(1)
+               .endArray())
          .endObject();
+
    }
 
 }
