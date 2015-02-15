@@ -6,10 +6,19 @@
 
 package akka.http.server.japi.examples.simple;
 
-import akka.actor.ActorSystem;
-import akka.http.server.japi.*;
-
 import java.io.IOException;
+
+import akka.actor.ActorSystem;
+import akka.http.server.japi.Handler;
+import akka.http.server.japi.Handler2;
+import akka.http.server.japi.HttpApp;
+import akka.http.server.japi.Parameter;
+import akka.http.server.japi.Parameters;
+import akka.http.server.japi.PathMatcher;
+import akka.http.server.japi.PathMatchers;
+import akka.http.server.japi.RequestContext;
+import akka.http.server.japi.Route;
+import akka.http.server.japi.RouteResult;
 
 public class SimpleServerApp8 extends HttpApp {
    private static Parameter<Integer> x = Parameters.integer("x");

@@ -23,7 +23,7 @@ import java.util.List;
 
 import org.bson.BasicBSONObject;
 import org.junit.Test;
-import org.sourcepit.json.BSONBuilder;
+import org.sourcepit.common.json.BSONBuilder;
 
 import com.mongodb.ServerAddress;
 
