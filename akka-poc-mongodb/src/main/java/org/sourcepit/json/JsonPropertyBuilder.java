@@ -20,8 +20,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 
-public interface JsonPropertyBuilder<ParentBuilder, JsonObject, JsonArray>
-{
+public interface JsonPropertyBuilder<ParentBuilder, JsonObject, JsonArray> {
    JsonObjectBuilder<JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> toOpenObject();
 
    JsonArrayBuilder<JsonObjectBuilder<ParentBuilder, JsonObject, JsonArray>, JsonObject, JsonArray> toOpenArray();

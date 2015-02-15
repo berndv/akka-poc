@@ -21,11 +21,9 @@ import akka.actor.UntypedActor;
 
 import com.mongodb.DBObject;
 
-public class MongoManagerActor extends UntypedActor
-{
+public class MongoManagerActor extends UntypedActor {
    @Override
-   public void onReceive(Object msg) throws Exception
-   {
+   public void onReceive(Object msg) throws Exception {
       System.out.println(msg);
 
       // { "users": { "find": [ { "age": { "$gt": 18 } }, { "name": 1, "address": 1 } ] } }
@@ -33,8 +31,7 @@ public class MongoManagerActor extends UntypedActor
       // { "collection": "users", "method": "find", "criteria": { "age": { "$gt": 18 } }, "projection": { "name": 1,
       // "address": 1 } }
 
-      if (msg instanceof DBObject)
-      {
+      if (msg instanceof DBObject) {
          final DBObject clientDef = (DBObject) msg;
          getContext().system().actorOf(Props.create(MongoClientActor.class, clientDef));
       }

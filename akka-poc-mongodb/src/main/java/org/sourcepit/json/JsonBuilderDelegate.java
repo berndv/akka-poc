@@ -19,8 +19,7 @@ package org.sourcepit.json;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-public interface JsonBuilderDelegate<JsonObject, JsonArray>
-{
+public interface JsonBuilderDelegate<JsonObject, JsonArray> {
    JsonObject createJsonObject();
 
    void setObject(JsonObject owner, String name, JsonObject value);

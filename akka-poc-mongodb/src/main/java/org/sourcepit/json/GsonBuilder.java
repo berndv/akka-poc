@@ -19,10 +19,8 @@ package org.sourcepit.json;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-public class GsonBuilder extends GenericJsonBuilder<JsonObject, JsonArray>
-{
-   public GsonBuilder()
-   {
+public class GsonBuilder extends GenericJsonBuilder<JsonObject, JsonArray> {
+   public GsonBuilder() {
       super(new GsonBuilderDelegate());
    }
 }

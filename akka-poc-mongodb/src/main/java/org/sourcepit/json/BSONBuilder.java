@@ -19,10 +19,8 @@ package org.sourcepit.json;
 import org.bson.BasicBSONObject;
 import org.bson.types.BasicBSONList;
 
-public class BSONBuilder extends GenericJsonBuilder<BasicBSONObject, BasicBSONList>
-{
-   public BSONBuilder()
-   {
+public class BSONBuilder extends GenericJsonBuilder<BasicBSONObject, BasicBSONList> {
+   public BSONBuilder() {
       super(new BSONBuilderDelegate());
    }
 }

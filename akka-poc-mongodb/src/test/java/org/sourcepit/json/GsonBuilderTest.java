@@ -19,23 +19,19 @@ package org.sourcepit.json;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
-public class GsonBuilderTest extends AbstractJsonBuilderTest<JsonObject, JsonArray>
-{
+public class GsonBuilderTest extends AbstractJsonBuilderTest<JsonObject, JsonArray> {
    @Override
-   protected JsonBuilder<JsonObject, JsonArray> newJsonBuilder()
-   {
+   protected JsonBuilder<JsonObject, JsonArray> newJsonBuilder() {
       return new GsonBuilder();
    }
 
    @Override
-   protected String arrayToString(JsonArray array)
-   {
+   protected String arrayToString(JsonArray array) {
       return array.toString();
    }
 
    @Override
-   protected String objectToString(JsonObject object)
-   {
+   protected String objectToString(JsonObject object) {
       return object.toString();
    }
 }

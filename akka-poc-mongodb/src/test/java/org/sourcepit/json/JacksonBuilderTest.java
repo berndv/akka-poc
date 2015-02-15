@@ -21,36 +21,28 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public class JacksonBuilderTest extends AbstractJsonBuilderTest<ObjectNode, ArrayNode>
-{
+public class JacksonBuilderTest extends AbstractJsonBuilderTest<ObjectNode, ArrayNode> {
    @Override
-   protected JsonBuilder<ObjectNode, ArrayNode> newJsonBuilder()
-   {
+   protected JsonBuilder<ObjectNode, ArrayNode> newJsonBuilder() {
       return new JacksonBuilder();
    }
 
    @Override
-   protected String arrayToString(ArrayNode array)
-   {
-      try
-      {
+   protected String arrayToString(ArrayNode array) {
+      try {
          return new ObjectMapper().writeValueAsString(array);
       }
-      catch (JsonProcessingException e)
-      {
+      catch (JsonProcessingException e) {
          throw new IllegalArgumentException(e);
       }
    }
 
    @Override
-   protected String objectToString(ObjectNode object)
-   {
-      try
-      {
+   protected String objectToString(ObjectNode object) {
+      try {
          return new ObjectMapper().writeValueAsString(object);
       }
-      catch (JsonProcessingException e)
-      {
+      catch (JsonProcessingException e) {
          throw new IllegalArgumentException(e);
       }
    }

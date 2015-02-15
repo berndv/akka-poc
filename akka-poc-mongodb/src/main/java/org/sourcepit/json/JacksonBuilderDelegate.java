@@ -24,163 +24,136 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public class JacksonBuilderDelegate implements JsonBuilderDelegate<ObjectNode, ArrayNode>
-{
+public class JacksonBuilderDelegate implements JsonBuilderDelegate<ObjectNode, ArrayNode> {
    private final JsonNodeFactory nodeFactory = JsonNodeFactory.instance;
 
    @Override
-   public ObjectNode createJsonObject()
-   {
+   public ObjectNode createJsonObject() {
       return nodeFactory.objectNode();
    }
 
    @Override
-   public void setObject(ObjectNode owner, String name, ObjectNode value)
-   {
+   public void setObject(ObjectNode owner, String name, ObjectNode value) {
       owner.set(name, value);
    }
 
    @Override
-   public void setArray(ObjectNode owner, String name, ArrayNode value)
-   {
+   public void setArray(ObjectNode owner, String name, ArrayNode value) {
       owner.set(name, value);
    }
 
    @Override
-   public void setNull(ObjectNode owner, String name)
-   {
+   public void setNull(ObjectNode owner, String name) {
       owner.set(name, nodeFactory.nullNode());
    }
 
    @Override
-   public void set(ObjectNode owner, String name, String value)
-   {
+   public void set(ObjectNode owner, String name, String value) {
       owner.set(name, nodeFactory.textNode(value));
    }
 
    @Override
-   public void set(ObjectNode owner, String name, BigInteger value)
-   {
+   public void set(ObjectNode owner, String name, BigInteger value) {
       owner.set(name, nodeFactory.numberNode(value));
    }
 
    @Override
-   public void set(ObjectNode owner, String name, BigDecimal value)
-   {
+   public void set(ObjectNode owner, String name, BigDecimal value) {
       owner.set(name, nodeFactory.numberNode(value));
    }
 
    @Override
-   public void set(ObjectNode owner, String name, Double value)
-   {
+   public void set(ObjectNode owner, String name, Double value) {
       owner.set(name, nodeFactory.numberNode(value));
    }
 
    @Override
-   public void set(ObjectNode owner, String name, Float value)
-   {
+   public void set(ObjectNode owner, String name, Float value) {
       owner.set(name, nodeFactory.numberNode(value));
    }
 
    @Override
-   public void set(ObjectNode owner, String name, Integer value)
-   {
+   public void set(ObjectNode owner, String name, Integer value) {
       owner.set(name, nodeFactory.numberNode(value));
    }
 
    @Override
-   public void set(ObjectNode owner, String name, Long value)
-   {
+   public void set(ObjectNode owner, String name, Long value) {
       owner.set(name, nodeFactory.numberNode(value));
    }
 
    @Override
-   public void set(ObjectNode owner, String name, Short value)
-   {
+   public void set(ObjectNode owner, String name, Short value) {
       owner.set(name, nodeFactory.numberNode(value));
    }
 
    @Override
-   public void set(ObjectNode owner, String name, Boolean value)
-   {
+   public void set(ObjectNode owner, String name, Boolean value) {
       owner.set(name, nodeFactory.booleanNode(value.booleanValue()));
    }
 
    @Override
-   public ArrayNode createJsonArray()
-   {
+   public ArrayNode createJsonArray() {
       return nodeFactory.arrayNode();
    }
 
    @Override
-   public void addObject(ArrayNode array, ObjectNode value)
-   {
+   public void addObject(ArrayNode array, ObjectNode value) {
       array.add(value);
    }
 
    @Override
-   public void addArray(ArrayNode array, ArrayNode value)
-   {
+   public void addArray(ArrayNode array, ArrayNode value) {
       array.add(value);
    }
 
    @Override
-   public void addNull(ArrayNode array)
-   {
+   public void addNull(ArrayNode array) {
       array.add(nodeFactory.nullNode());
    }
 
    @Override
-   public void add(ArrayNode array, BigInteger value)
-   {
+   public void add(ArrayNode array, BigInteger value) {
       array.add(nodeFactory.numberNode(value));
    }
 
    @Override
-   public void add(ArrayNode array, BigDecimal value)
-   {
+   public void add(ArrayNode array, BigDecimal value) {
       array.add(nodeFactory.numberNode(value));
    }
 
    @Override
-   public void add(ArrayNode array, Double value)
-   {
+   public void add(ArrayNode array, Double value) {
       array.add(nodeFactory.numberNode(value));
    }
 
    @Override
-   public void add(ArrayNode array, Float value)
-   {
+   public void add(ArrayNode array, Float value) {
       array.add(nodeFactory.numberNode(value));
    }
 
    @Override
-   public void add(ArrayNode array, Integer value)
-   {
+   public void add(ArrayNode array, Integer value) {
       array.add(nodeFactory.numberNode(value));
    }
 
    @Override
-   public void add(ArrayNode array, Long value)
-   {
+   public void add(ArrayNode array, Long value) {
       array.add(nodeFactory.numberNode(value));
    }
 
    @Override
-   public void add(ArrayNode array, Short value)
-   {
+   public void add(ArrayNode array, Short value) {
       array.add(nodeFactory.numberNode(value));
    }
 
    @Override
-   public void add(ArrayNode array, String value)
-   {
+   public void add(ArrayNode array, String value) {
       array.add(nodeFactory.textNode(value));
    }
 
    @Override
-   public void add(ArrayNode array, Boolean value)
-   {
+   public void add(ArrayNode array, Boolean value) {
       array.add(nodeFactory.booleanNode(value.booleanValue()));
    }
 

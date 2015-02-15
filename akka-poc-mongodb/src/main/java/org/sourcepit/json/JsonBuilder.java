@@ -15,8 +15,7 @@
  */
 
 package org.sourcepit.json;
-public interface JsonBuilder<JsonObject, JsonArray>
-{
+public interface JsonBuilder<JsonObject, JsonArray> {
    JsonObjectBuilder<JsonObject, JsonObject, JsonArray> openObject();
 
    JsonArrayBuilder<JsonArray, JsonObject, JsonArray> openArray();

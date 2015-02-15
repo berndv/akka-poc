@@ -27,12 +27,10 @@ import org.sourcepit.json.BSONBuilder;
 
 import com.mongodb.ServerAddress;
 
-public class MongoClientActorTest
-{
+public class MongoClientActorTest {
 
    @Test
-   public void test() throws UnknownHostException
-   {
+   public void test() throws UnknownHostException {
       BSONBuilder json = new BSONBuilder();
 
       BasicBSONObject conf = json.openObject()

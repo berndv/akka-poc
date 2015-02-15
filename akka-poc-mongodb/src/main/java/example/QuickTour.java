@@ -37,8 +37,7 @@ import com.mongodb.ParallelScanOptions;
 /**
  * The tutorial from http://docs.mongodb.org/ecosystem/tutorial/getting-started-with-java-driver/
  */
-public class QuickTour
-{
+public class QuickTour {
    // CHECKSTYLE:OFF
    /**
     * Run this main method to see the output of this quick example.
@@ -46,8 +45,7 @@ public class QuickTour
     * @param args takes no args
     * @throws UnknownHostException if it cannot connect to a MongoDB instance at localhost:27017
     */
-   public static void main(final String[] args) throws UnknownHostException
-   {
+   public static void main(final String[] args) throws UnknownHostException {
       // connect to the local database server
       MongoClient mongoClient = new MongoClient();
 
@@ -62,8 +60,7 @@ public class QuickTour
 
       // get a list of the collections in this database and print them out
       Set<String> collectionNames = db.getCollectionNames();
-      for (final String s : collectionNames)
-      {
+      for (final String s : collectionNames) {
          System.out.println(s);
       }
 
@@ -85,23 +82,19 @@ public class QuickTour
       System.out.println(myDoc);
 
       // now, lets add lots of little documents to the collection so we can explore queries and cursors
-      for (int i = 0; i < 100; i++)
-      {
+      for (int i = 0; i < 100; i++) {
          coll.insert(new BasicDBObject().append("i", i));
       }
       System.out.println("total # of documents after inserting 100 small ones (should be 101) " + coll.getCount());
 
       // lets get all the documents in the collection and print them out
       DBCursor cursor = coll.find();
-      try
-      {
-         while (cursor.hasNext())
-         {
+      try {
+         while (cursor.hasNext()) {
             System.out.println(cursor.next());
          }
       }
-      finally
-      {
+      finally {
          cursor.close();
       }
 
@@ -109,15 +102,12 @@ public class QuickTour
       BasicDBObject query = new BasicDBObject("i", 71);
       cursor = coll.find(query);
 
-      try
-      {
-         while (cursor.hasNext())
-         {
+      try {
+         while (cursor.hasNext()) {
             System.out.println(cursor.next());
          }
       }
-      finally
-      {
+      finally {
          cursor.close();
       }
 
@@ -126,15 +116,12 @@ public class QuickTour
 
       cursor = coll.find(query);
 
-      try
-      {
-         while (cursor.hasNext())
-         {
+      try {
+         while (cursor.hasNext()) {
             System.out.println(cursor.next());
          }
       }
-      finally
-      {
+      finally {
          cursor.close();
       }
 
@@ -143,15 +130,12 @@ public class QuickTour
       query = new BasicDBObject("i", new BasicDBObject("$gt", 50));
       cursor = coll.find(query);
 
-      try
-      {
-         while (cursor.hasNext())
-         {
+      try {
+         while (cursor.hasNext()) {
             System.out.println(cursor.next());
          }
       }
-      finally
-      {
+      finally {
          cursor.close();
       }
 
@@ -159,15 +143,12 @@ public class QuickTour
       query = new BasicDBObject("i", new BasicDBObject("$gt", 20).append("$lte", 30));
       cursor = coll.find(query);
 
-      try
-      {
-         while (cursor.hasNext())
-         {
+      try {
+         while (cursor.hasNext()) {
             System.out.println(cursor.next());
          }
       }
-      finally
-      {
+      finally {
          cursor.close();
       }
 
@@ -199,10 +180,8 @@ public class QuickTour
       ParallelScanOptions parallelScanOptions = ParallelScanOptions.builder().numCursors(3).batchSize(300).build();
 
       List<Cursor> cursors = coll.parallelScan(parallelScanOptions);
-      for (Cursor pCursor : cursors)
-      {
-         while (pCursor.hasNext())
-         {
+      for (Cursor pCursor : cursors) {
+         while (pCursor.hasNext()) {
             System.out.println(pCursor.next());
          }
       }

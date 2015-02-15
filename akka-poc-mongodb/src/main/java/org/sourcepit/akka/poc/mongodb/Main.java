@@ -22,10 +22,8 @@ import akka.actor.ActorRef;
 import akka.actor.ActorSystem;
 import akka.actor.Props;
 
-public class Main
-{
-   public static void main(String[] args) throws IOException
-   {
+public class Main {
+   public static void main(String[] args) throws IOException {
       final ActorSystem actorSystem = ActorSystem.create();
 
       ActorRef fooRef = actorSystem.actorOf(Props.create(MongoManagerActor.class));

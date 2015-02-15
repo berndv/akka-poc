@@ -24,162 +24,135 @@ import com.google.gson.JsonNull;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
 
-public class GsonBuilderDelegate implements JsonBuilderDelegate<JsonObject, JsonArray>
-{
+public class GsonBuilderDelegate implements JsonBuilderDelegate<JsonObject, JsonArray> {
 
    @Override
-   public JsonObject createJsonObject()
-   {
+   public JsonObject createJsonObject() {
       return new JsonObject();
    }
 
    @Override
-   public void setObject(JsonObject owner, String name, JsonObject value)
-   {
+   public void setObject(JsonObject owner, String name, JsonObject value) {
       owner.add(name, value);
    }
 
    @Override
-   public void setArray(JsonObject owner, String name, JsonArray value)
-   {
+   public void setArray(JsonObject owner, String name, JsonArray value) {
       owner.add(name, value);
    }
 
    @Override
-   public void setNull(JsonObject owner, String name)
-   {
+   public void setNull(JsonObject owner, String name) {
       owner.add(name, JsonNull.INSTANCE);
    }
 
    @Override
-   public void set(JsonObject owner, String name, String value)
-   {
+   public void set(JsonObject owner, String name, String value) {
       owner.addProperty(name, value);
    }
 
    @Override
-   public void set(JsonObject owner, String name, BigInteger value)
-   {
+   public void set(JsonObject owner, String name, BigInteger value) {
       owner.addProperty(name, value);
    }
 
    @Override
-   public void set(JsonObject owner, String name, BigDecimal value)
-   {
+   public void set(JsonObject owner, String name, BigDecimal value) {
       owner.addProperty(name, value);
    }
 
    @Override
-   public void set(JsonObject owner, String name, Double value)
-   {
+   public void set(JsonObject owner, String name, Double value) {
       owner.addProperty(name, value);
    }
 
    @Override
-   public void set(JsonObject owner, String name, Float value)
-   {
+   public void set(JsonObject owner, String name, Float value) {
       owner.addProperty(name, value);
    }
 
    @Override
-   public void set(JsonObject owner, String name, Integer value)
-   {
+   public void set(JsonObject owner, String name, Integer value) {
       owner.addProperty(name, value);
    }
 
    @Override
-   public void set(JsonObject owner, String name, Long value)
-   {
+   public void set(JsonObject owner, String name, Long value) {
       owner.addProperty(name, value);
    }
 
    @Override
-   public void set(JsonObject owner, String name, Short value)
-   {
+   public void set(JsonObject owner, String name, Short value) {
       owner.addProperty(name, value);
    }
 
    @Override
-   public void set(JsonObject owner, String name, Boolean value)
-   {
+   public void set(JsonObject owner, String name, Boolean value) {
       owner.addProperty(name, value);
    }
 
    @Override
-   public JsonArray createJsonArray()
-   {
+   public JsonArray createJsonArray() {
       return new JsonArray();
    }
 
    @Override
-   public void addObject(JsonArray array, JsonObject value)
-   {
+   public void addObject(JsonArray array, JsonObject value) {
       array.add(value);
    }
 
    @Override
-   public void addArray(JsonArray array, JsonArray value)
-   {
+   public void addArray(JsonArray array, JsonArray value) {
       array.add(value);
    }
 
    @Override
-   public void addNull(JsonArray array)
-   {
+   public void addNull(JsonArray array) {
       array.add(JsonNull.INSTANCE);
    }
 
    @Override
-   public void add(JsonArray array, BigInteger value)
-   {
+   public void add(JsonArray array, BigInteger value) {
       array.add(new JsonPrimitive(value));
    }
 
    @Override
-   public void add(JsonArray array, BigDecimal value)
-   {
+   public void add(JsonArray array, BigDecimal value) {
       array.add(new JsonPrimitive(value));
    }
 
    @Override
-   public void add(JsonArray array, Double value)
-   {
+   public void add(JsonArray array, Double value) {
       array.add(new JsonPrimitive(value));
    }
 
    @Override
-   public void add(JsonArray array, Float value)
-   {
+   public void add(JsonArray array, Float value) {
       array.add(new JsonPrimitive(value));
    }
 
    @Override
-   public void add(JsonArray array, Integer value)
-   {
+   public void add(JsonArray array, Integer value) {
       array.add(new JsonPrimitive(value));
    }
 
    @Override
-   public void add(JsonArray array, Long value)
-   {
+   public void add(JsonArray array, Long value) {
       array.add(new JsonPrimitive(value));
    }
 
    @Override
-   public void add(JsonArray array, Short value)
-   {
+   public void add(JsonArray array, Short value) {
       array.add(new JsonPrimitive(value));
    }
 
    @Override
-   public void add(JsonArray array, String value)
-   {
+   public void add(JsonArray array, String value) {
       array.add(new JsonPrimitive(value));
    }
 
    @Override
-   public void add(JsonArray array, Boolean value)
-   {
+   public void add(JsonArray array, Boolean value) {
       array.add(new JsonPrimitive(value));
    }
 }

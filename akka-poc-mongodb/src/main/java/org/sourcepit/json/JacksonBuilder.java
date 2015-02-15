@@ -19,10 +19,8 @@ package org.sourcepit.json;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public class JacksonBuilder extends GenericJsonBuilder<ObjectNode, ArrayNode>
-{
-   public JacksonBuilder()
-   {
+public class JacksonBuilder extends GenericJsonBuilder<ObjectNode, ArrayNode> {
+   public JacksonBuilder() {
       super(new JacksonBuilderDelegate());
    }
 }
